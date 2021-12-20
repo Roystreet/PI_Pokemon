@@ -51,7 +51,10 @@ const  CreatePokemon= ()=>{
         }
     }
 
-    const handlSubmit=(e)=>{}
+    const handlSubmit=(e)=>{
+        e.prevenDefault()
+
+    }
     return <>
     
         <h1> Crea tu pokemon</h1>

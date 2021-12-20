@@ -78,21 +78,78 @@ const getPokemonTotal = async () => {
 
 const getPokemonId = async (id) => {
   try {
-    const pokeApi = await axios.get(`${URL}/${id}`);
-    const data = pokeApi.data;
-    return data;
+    const pokeApi = await axios.get(`${URL}/${id}`).catch(() => undefined);
+
+    if (pokeApi == undefined) {
+      const pokeDb = await getPokemonDb();
+      const data = pokeDb.filter(
+        (data) => data.id.toLowerCase() == id.toLowerCase()
+      );
+      if (data.length > 0) {
+        return data[0];
+      } else {
+        return undefined;
+      }
+    }
+    {
+      return {
+        id: pokeApi.data.id,
+        name: pokeApi.data.name,
+        weight: pokeApi.data.weight,
+        height: pokeApi.data.height,
+        img: pokeApi.data.sprites.other.dream_world.front_default,
+        hp: pokeApi.data.stats[0].base_stat,
+        atk: pokeApi.data.stats[1].base_stat,
+        def: pokeApi.data.stats[2].base_stat,
+        vel: pokeApi.data.stats[5].base_stat,
+        types: pokeApi.data.types.map((data) => data.type.name),
+      };
+    }
   } catch (e) {
-    console.log(e);
+    console.log("fallo");
   }
 };
 
-const getPokemonName = async (name) => {};
+const getPokemonName = async (name) => {
+  try {
+    const pokeApi = await axios.get(`${URL}/${name}`).catch(() => undefined);
+
+    if (pokeApi == undefined) {
+      const pokeDb = await getPokemonDb();
+      const data = pokeDb.filter(
+        (data) => data.name.toLowerCase() === name.toLowerCase()
+      );
+      if (data.length > 0) {
+        return data[0];
+      } else {
+        return undefined;
+      }
+    }
+    {
+      return {
+        id: pokeApi.data.id,
+        name: pokeApi.data.name,
+        weight: pokeApi.data.weight,
+        height: pokeApi.data.height,
+        img: pokeApi.data.sprites.other.dream_world.front_default,
+        hp: pokeApi.data.stats[0].base_stat,
+        atk: pokeApi.data.stats[1].base_stat,
+        def: pokeApi.data.stats[2].base_stat,
+        vel: pokeApi.data.stats[5].base_stat,
+        types: pokeApi.data.types.map((data) => data.type.name),
+      };
+    }
+  } catch (e) {
+    console.log("fallo");
+  }
+};
 
 //getPokemonTotal()
 // .then((data) => console.log(data))
 // .catch((err) => console.log(err));
 
 module.exports = {
-  getPokemon: getPokemonTotal,
-  getId: getPokemonId,
+  getPokemonTotal,
+  getPokemonId,
+  getPokemonName,
 };
