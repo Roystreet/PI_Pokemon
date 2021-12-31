@@ -11,11 +11,14 @@
 .container_pokemon {
   display: block;
   border-radius: 30px;
-  background: linear-gradient(#04009a, #77acf1);
+  background-color: linear-gradient(#77acf1, #04009a);
   width: auto;
   height: auto;
   color: white;
   box-shadow: 3px 3px 3px 3px rgb(35, 35, 35);
+}
+.container_pokemon h2 {
+  color: black;
 }
 .container_type {
   display: flex;
@@ -23,11 +26,12 @@
   padding: 5px;
 }
 .img_pokemon {
-  width: 350px;
+  width: 400px;
   height: 350px;
-  background-color: #77acf1;
-  border: 2px solid black;
-  border-radius: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
+
+  background: linear-gradient(#77acf1, #04009a);
+  /*border: 2px solid black;*/
+  border-radius: 30px 30px 1px 1px;
+  margin-left: 0px;
+  margin-right: 00px;
 }

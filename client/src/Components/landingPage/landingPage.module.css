@@ -1,0 +1,35 @@
+.container {
+  background-image: url("../../Asset/fondo_pokemon.jpg");
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+}
+
+.container_botton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+}
+button {
+  text-decoration: none;
+  background: #c0fefc;
+  font-size: 20px;
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 1.5px 1.5px 1.5px 1.5px;
+}
+.link {
+  text-decoration: none;
+  color: #04009a;
+}
+button:hover {
+  background: #3edbf0;
+}

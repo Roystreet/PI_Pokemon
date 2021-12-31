@@ -1,31 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getTypes, getPokemon } from "./Actions/index";
-import "./App.css";
-import Card from "./Components/card/Card.jsx";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import { Home } from "./Components/home";
+import { Error } from "./Components/error";
+import Detail from "./Components/detail";
+import { LandingPage } from "./Components/landingPage";
+import { CreatePokemon } from "./Components/createPokemon";
 
-function App() {
-  const pokemons = useSelector((state) => state.pokemons);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log("hey");
-    dispatch(getPokemon());
-    dispatch(getTypes());
-  }, [dispatch]);
-
+const App = () => {
   return (
-    <div className="App">
-      <h1>Henry Pokemon</h1>
-      <div className="Grip">
-        {pokemons.map((data) => {
-          return (
-            <Card name={data.name} img={data.img} types={data.types}></Card>
-          );
-        })}
-      </div>
-    </div>
+    <>
+      <Switch>
+        <Route exact path="/" component={LandingPage}></Route>
+        <Route exact path="/home" component={Home}></Route>
+        <Route exact path="/createpokemon" component={CreatePokemon}></Route>
+        <Route exact path="/detalle/:id" component={Detail}></Route>
+        <Route path="/*" component={Error}></Route>
+      </Switch>
+    </>
   );
-}
+};
 
 export default App;

@@ -22,7 +22,7 @@ export const getPokemon = () => {
 export const getPokemonDetail = (id) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3001/pokemon/${2}`)
+      .get(`http://localhost:3001/pokemon/${id}`)
       .then((response) => response.data)
       .then((data) => dispatch({ type: GET_POKEMON_DETAIL, payload: data }));
   };
@@ -50,8 +50,8 @@ export const filterBy = (type) => {
   return { type: FILTER_BY, payload: type };
 };
 
-export const orderBy = (order, pokemon) => {
-  return (dispatch) => {};
+export const orderBy = (order) => {
+  return { type: ORDER_BY, payload: order };
 };
 
 export const clearDetail = () => {
