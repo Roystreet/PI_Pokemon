@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import styles from "./landingPage.module.css"
 
-export  const LandingPage= ()=>{
+ const LandingPage= ()=>{
 
     return (
 
@@ -17,3 +17,5 @@ export  const LandingPage= ()=>{
         </>
     )
 }
+
+export default LandingPage;

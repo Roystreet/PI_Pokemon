@@ -1,11 +1,12 @@
 import React,{useState}  from 'react';
 import {useSelector} from'react-redux';
 import axios from "axios";
-import styles from "./createPokemon.module.css"
+import styles from "./createPokemon.module.css";
+import NavBar from '../navBar';
 
 
 
-export const  CreatePokemon= ()=>{
+ const  CreatePokemon= ()=>{
 
     const  types= useSelector((state)=> state.types)
     const [nombre, setNombre]=useState("")
@@ -36,13 +37,18 @@ export const  CreatePokemon= ()=>{
         
         
     }
-
-    const handleError = (e) => {
-
-    }
-
+    
     const handleSubmit=(e)=>{
         e.preventDefault();
+        if (nombre===""){ return alert("el campo nombre no puede estar vacio")}
+        else if(vida===""){ return alert("el campo vida no puede estar vacio")}
+        else if(ataque===""){ return alert("el campo ataque no puede estar vacio")}
+        else if(defensa===""){ return alert("el campo defensa no puede estar vacio")}
+        else if(velocidad===""){ return alert("el campo velocidad no puede estar vacio")}
+        else if(altura===""){ return alert("el campo altura no puede estar vacio")}
+        else if(peso===""){ return alert("el campo peso no puede estar vacio")}  
+        else if(types===[]){ return alert("el campo types no puede estar vacio")}
+        else{
         axios.post("http://localhost:3001/pokemon",{
             name: nombre,
             img: imagen,
@@ -53,7 +59,7 @@ export const  CreatePokemon= ()=>{
             height: altura,
             weight: peso,
             types: type,
-        }).then((response)=>alert("Creado Pokemon de manera exitosa ")).then(()=>{
+        }).then(()=>alert("Creado Pokemon de manera exitosa ")).then(()=>{
             setNombre("")
             setImagen("")
             setVida("")
@@ -66,10 +72,11 @@ export const  CreatePokemon= ()=>{
             
         })
         
-    }
+    }}
     
   return (<>
-            <div className={styles.form_pokemon} onSubmit={handleSubmit}>
+            <NavBar/>
+            <div className={styles.form_pokemon} >
                 <div className={styles.new_pokemon}>
                  <form onSubmit={handleSubmit} className={styles.part_cart} >
                     <h1> Crear Pokemon</h1>
@@ -89,7 +96,7 @@ export const  CreatePokemon= ()=>{
                     <input type="range" value={peso} onChange={handleChange} placeholder="peso del pokemon"  name='peso'  ></input>
                     <label>imagen</label>
                     <input type="text" value={imagen} onChange={handleChange} placeholder="Imagen del pokemon" name='imagen'></input>
-                    <form onSubmit={handleSubmit} className={styles.types}>
+                    <form className={styles.types}>
                         {types.map(({id, name})=>{
                             return( <div key={id}>
                                 <input type="checkbox" 
@@ -111,3 +118,5 @@ export const  CreatePokemon= ()=>{
     
     </>)
 }
+
+export default CreatePokemon;

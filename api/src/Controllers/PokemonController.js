@@ -7,12 +7,12 @@ const getPokemonApi = async () => {
   const listPokemon = [];
 
   try {
-    for (let i = 0; i <= 1; i++) {
-      const pokeApi = await axios.get(URL);
-      pokeApi.data.results.forEach((data) => listPokemon.push(data.url));
-
-      url = pokeApi.data.next;
-    } // finaliza el for
+    const pokeApi = await axios.get(URL);
+    pokeApi.data.results.forEach((data) => listPokemon.push(data.url));
+    const url2 = pokeApi.data.next;
+    const pokeApi2 = await axios.get(url2);
+    pokeApi2.data.results.forEach((data) => listPokemon.push(data.url));
+    // finaliza el for
     // separo lo que ya tenia y ejecuto aqui l optimizacion
     let listPromise = [];
     listPokemon.forEach((data) => {
@@ -90,8 +90,7 @@ const getPokemonId = async (id) => {
       } else {
         return undefined;
       }
-    }
-    {
+    } else {
       return {
         id: pokeApi.data.id,
         name: pokeApi.data.name,

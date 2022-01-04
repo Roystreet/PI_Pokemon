@@ -13,3 +13,4 @@ export const ORDER_BY = "ORDER_BY";
 export const ADD_POKEMON = "ADD_POKEMON";
 
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
+export const CLEAR_POKEMON = "CLEAR_POKEMON";

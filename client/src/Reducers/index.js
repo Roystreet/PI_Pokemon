@@ -2,11 +2,11 @@ import {
   GET_POKEMONS,
   GET_POKEMON_DETAIL,
   GET_TYPES,
-  ADD_POKEMON,
   FILTER_BY,
   ORDER_BY,
   GET_POKEMON_NAME,
   CLEAR_DETAIL,
+  CLEAR_POKEMON,
 } from "../Constants/index";
 
 const initialState = {
@@ -31,7 +31,9 @@ export default function rootReducer(state = initialState, { type, payload }) {
     case ORDER_BY:
       return { ...state, pokemons: payload };
     case CLEAR_DETAIL:
-      return { ...state, pokemonDetail: payload };
+      return { ...state, pokemonDetail: {} };
+    case CLEAR_POKEMON:
+      return { ...state, pokemons: [] };
     default:
       return state;
   }

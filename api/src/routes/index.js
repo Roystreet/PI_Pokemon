@@ -20,8 +20,12 @@ router.get("/pokemon", async (req, res) => {
     if (name) {
       const data = await getPokemonName(name);
       if (data) {
+        console.log(data.name + "= data del queryname");
+        console.log(data.name);
+        console.log(name);
         res.status(200).json(data);
       } else {
+        console.log(data);
         res.status(404).json({ msg: "Pokemon not found" });
       }
     } else {

@@ -1,8 +1,10 @@
 import React,{useState} from "react"
+import {useHistory} from "react-router-dom"
 
 
-export const  SearchBar= ()=>{
+ const  SearchBar= ()=>{
 
+    const {push}= useHistory()
     const [search, setSearch]=useState("")
 
     
@@ -10,11 +12,21 @@ export const  SearchBar= ()=>{
     
         setSearch(e.target.value)
     }
+    
+    const handleSubmit= (e)=>{
+        e.preventDefault()
+       setTimeout(() => {
+        push(`/detalle/${search}`)
+       },300); 
+        
+    }
 
     return(
-        <form>
+        <form onSubmit={handleSubmit}>
             <input type="text"  name="search" value={search} placeholder="Aqui va tu pokemon" onChange={handleChange}></input>
             <input type="submit" value="buscar" />
         </form>
     )
 }
+
+export default SearchBar;
