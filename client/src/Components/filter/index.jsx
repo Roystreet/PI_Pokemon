@@ -7,7 +7,7 @@ const Filter= ()=>{
     const {push}= useHistory()
     const dispatch = useDispatch()
     const types= useSelector((state) => state.types)
-    const pokemon= useSelector((state) => state.pokemons)
+    const pokemon= useSelector((state) => state.filter)
     const [filter, setFilter]=useState("")
     const [ filterC, setFilterC]=useState("")
     const handleChangeF= (e)=>{

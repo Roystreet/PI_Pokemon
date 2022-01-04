@@ -13,13 +13,14 @@ import {
 const initialState = {
   pokemons: [],
   pokemonDetail: {},
+  filter: [],
   types: [],
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
   switch (type) {
     case GET_POKEMONS:
-      return { ...state, pokemons: payload };
+      return { ...state, pokemons: payload, filter: payload };
     case GET_POKEMON_DETAIL:
       return { ...state, pokemonDetail: payload };
     case GET_POKEMON_NAME:

@@ -29,7 +29,6 @@ export const Order=()=>{
             <div className={styles.item}>
                 <label>Ordenar </label>
                 <select defaultValue={order}  onChange={handleChange}>
-
                     <option value="Z-A">A-Z</option>
                     <option value="A-Z">Z-A</option>
                     <option value="Fuerza Asc">Fuerza Asc</option>
