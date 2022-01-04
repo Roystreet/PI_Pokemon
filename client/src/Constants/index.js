@@ -11,6 +11,9 @@ export const FILTER_BY = "FILTER_BY";
 export const ORDER_BY = "ORDER_BY";
 
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
+
 export const CLEAR_POKEMON = "CLEAR_POKEMON";
 
 export const FILTER_BY_CREATE = "FILTER_BY_CREATE";
+
+export const ALL_POKEMON = "ALL_POKEMON";

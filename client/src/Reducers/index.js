@@ -8,6 +8,7 @@ import {
   CLEAR_DETAIL,
   CLEAR_POKEMON,
   FILTER_BY_CREATE,
+  ALL_POKEMON,
 } from "../Constants/index";
 
 const initialState = {
@@ -37,6 +38,8 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return { ...state, pokemonDetail: {} };
     case CLEAR_POKEMON:
       return { ...state, pokemons: [] };
+    case ALL_POKEMON:
+      return { ...state, pokemons: payload };
     default:
       return state;
   }

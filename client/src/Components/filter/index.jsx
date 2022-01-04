@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {getPokemon, filterBy, filterCreate} from '../../Actions'
+import {getPokemon, filterBy, filterCreate, allPokemon} from '../../Actions'
 
 const Filter= ()=>{
     const {push}= useHistory()
@@ -18,10 +18,8 @@ const Filter= ()=>{
         setFilterC(e.target.value)
     }
     const handleClear= (e)=>{
-        dispatch(getPokemon())
-        setTimeout(() => {
-            push("/home")
-        },300);
+        dispatch(allPokemon(pokemon))
+      
     }
 
     const handleFiltrar=(e)=>{
@@ -32,7 +30,12 @@ const Filter= ()=>{
     }
     
     const handleBuscar=(e)=>{
-        
+          if(filterC==="creado"){
+              
+              dispatch(filterCreate(pokemon.filter((data) => data.id.length>5)))
+          }else{
+              dispatch(filterCreate(pokemon.filter((data) => data.id<1000)))
+          }
     }
 
     return (
@@ -51,7 +54,7 @@ const Filter= ()=>{
                    <option value="creado">Creado</option>
                    <option value="existente">Existente</option>
                 </select>
-                <input type="submit" value="buscar" />
+                <input type="submit" value="buscar" onClick={handleBuscar}  />
             </div>
             <button  onClick={handleClear}>AllPokemon</button>
         </div>

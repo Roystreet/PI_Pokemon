@@ -10,6 +10,7 @@ import {
   CLEAR_DETAIL,
   CLEAR_POKEMON,
   FILTER_BY_CREATE,
+  ALL_POKEMON,
 } from "../Constants/index";
 const url = "http://localhost:3001/pokemon?";
 
@@ -75,5 +76,11 @@ export const clearDetail = () => {
 export const clearPokemon = () => {
   return (dispatch) => {
     dispatch({ type: CLEAR_POKEMON });
+  };
+};
+
+export const allPokemon = (payload) => {
+  return (dispatch) => {
+    dispatch({ type: ALL_POKEMON, payload: payload });
   };
 };
