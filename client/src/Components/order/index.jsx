@@ -15,14 +15,13 @@ export const Order=()=>{
 
     const handleChange=(e)=>{
         setOrder(e.target.value)
+        dispatch(orderBy(utils(order, pokemons)))
         setTimeout(() => {
             push("/home")
         }, 30);
                     
     }
-     useEffect(() => {
-         dispatch(orderBy(utils(order, pokemons)))
-     },[dispatch, pokemons,order])
+   
 
 
     return(
@@ -31,8 +30,8 @@ export const Order=()=>{
                 <label>Ordenar </label>
                 <select defaultValue={order}  onChange={handleChange}>
 
-                    <option value="A-Z">A-Z</option>
-                    <option value="Z-A">Z-A</option>
+                    <option value="Z-A">A-Z</option>
+                    <option value="A-Z">Z-A</option>
                     <option value="Fuerza Asc">Fuerza Asc</option>
                     <option value="Fuerza Desc">Fuerza Desc</option>
                 </select>

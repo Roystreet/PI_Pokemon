@@ -10,7 +10,7 @@ export const FILTER_BY = "FILTER_BY";
 
 export const ORDER_BY = "ORDER_BY";
 
-export const ADD_POKEMON = "ADD_POKEMON";
-
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const CLEAR_POKEMON = "CLEAR_POKEMON";
+
+export const FILTER_BY_CREATE = "FILTER_BY_CREATE";

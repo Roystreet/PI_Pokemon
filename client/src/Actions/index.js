@@ -9,6 +9,7 @@ import {
   GET_POKEMON_NAME,
   CLEAR_DETAIL,
   CLEAR_POKEMON,
+  FILTER_BY_CREATE,
 } from "../Constants/index";
 const url = "http://localhost:3001/pokemon?";
 
@@ -55,6 +56,10 @@ export const getTypes = () => {
 
 export const filterBy = (type) => {
   return { type: FILTER_BY, payload: type };
+};
+
+export const filterCreate = (type) => {
+  return { type: FILTER_BY_CREATE, payload: type };
 };
 
 export const orderBy = (order) => {
