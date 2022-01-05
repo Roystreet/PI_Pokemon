@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTypes, getPokemon, clearPokemon} from "../../Actions/index";
+import { getTypes, getPokemon, clearPokemon, getPage, prevPage, nextPage } from "../../Actions/index";
 import Card from "../../Components/card";
 import styles from "./home.module.css";
 import { Order } from "../order";
@@ -12,7 +12,7 @@ import  SearchBar  from "../searchBar/index";
 
     const dispatch = useDispatch();
     const pokemons = useSelector((state) => state.pokemons);
-    const [page, setPage] =useState(1)
+    const page= useSelector((state) => state.page)
      
     
     useEffect(() => {
@@ -23,7 +23,15 @@ import  SearchBar  from "../searchBar/index";
     }, [dispatch]);
 
 
-    const handlePage = (e) => { e.target.name === "next" ? setPage(page + 1) : setPage(page - 1) };
+    const handlePage = (e) => {
+      if(e.target.name === "prev")
+         {
+           if(page!==1) return dispatch( prevPage(page-1))
+         }else{
+            return dispatch( nextPage(page+1))
+         }
+    
+    };
 
     const pagination=(pokemons, page)=>{
       

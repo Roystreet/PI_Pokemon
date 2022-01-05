@@ -11,6 +11,9 @@ import {
   CLEAR_POKEMON,
   FILTER_BY_CREATE,
   ALL_POKEMON,
+  GET_PAGE,
+  PREV_PAGE,
+  NEXT_PAGE,
 } from "../Constants/index";
 const url = "http://localhost:3001/pokemon?";
 
@@ -82,5 +85,23 @@ export const clearPokemon = () => {
 export const allPokemon = (payload) => {
   return (dispatch) => {
     dispatch({ type: ALL_POKEMON, payload: payload });
+  };
+};
+
+export const getPage = () => {
+  return (dispatch) => {
+    dispatch({ type: GET_PAGE });
+  };
+};
+
+export const prevPage = (payload) => {
+  return (dispatch) => {
+    dispatch({ type: PREV_PAGE, payload: payload });
+  };
+};
+
+export const nextPage = (payload) => {
+  return (dispatch) => {
+    dispatch({ type: NEXT_PAGE, payload: payload });
   };
 };

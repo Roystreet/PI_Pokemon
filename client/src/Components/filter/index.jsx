@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {getPokemon, filterBy, filterCreate, allPokemon} from '../../Actions'
+import {getPokemon, filterBy, filterCreate, allPokemon, getPage} from '../../Actions'
 
 const Filter= ()=>{
     const {push}= useHistory()
@@ -27,14 +27,17 @@ const Filter= ()=>{
         let pivote=pokemon.filter((data) => data.types.includes(filter))
         console.log(pivote)
         dispatch(filterBy(pivote))
+        dispatch(getPage())
     }
     
     const handleBuscar=(e)=>{
           if(filterC==="creado"){
               
               dispatch(filterCreate(pokemon.filter((data) => data.id.length>5)))
+              dispatch(getPage())
           }else{
               dispatch(filterCreate(pokemon.filter((data) => data.id<1000)))
+              dispatch(getPage())
           }
     }
 

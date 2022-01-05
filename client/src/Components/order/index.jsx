@@ -10,7 +10,7 @@ export const Order=()=>{
 
      const [order, setOrder]=useState("A-Z");
      const dispatch = useDispatch()
-     const pokemons= useSelector((state)=> state.pokemons)
+     const pokemons= useSelector((state)=> state.filter)
     const {push} = useHistory()
 
     const handleChange=(e)=>{
@@ -28,9 +28,9 @@ export const Order=()=>{
    
             <div className={styles.item}>
                 <label>Ordenar </label>
-                <select defaultValue={order}  onChange={handleChange}>
-                    <option value="Z-A">A-Z</option>
-                    <option value="A-Z">Z-A</option>
+                <select defaultValue="--"  onChange={handleChange}>
+                    <option value="A-Z">A-Z</option>
+                    <option value="Z-A">Z-A</option>
                     <option value="Fuerza Asc">Fuerza Asc</option>
                     <option value="Fuerza Desc">Fuerza Desc</option>
                 </select>

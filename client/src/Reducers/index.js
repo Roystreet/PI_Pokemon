@@ -9,6 +9,9 @@ import {
   CLEAR_POKEMON,
   FILTER_BY_CREATE,
   ALL_POKEMON,
+  GET_PAGE,
+  PREV_PAGE,
+  NEXT_PAGE,
 } from "../Constants/index";
 
 const initialState = {
@@ -16,6 +19,7 @@ const initialState = {
   pokemonDetail: {},
   filter: [],
   types: [],
+  page: 1,
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -40,6 +44,13 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return { ...state, pokemons: [] };
     case ALL_POKEMON:
       return { ...state, pokemons: payload };
+    case GET_PAGE:
+      return { ...state, page: 1 };
+    case PREV_PAGE:
+      return { ...state, page: payload };
+    case NEXT_PAGE:
+      return { ...state, page: payload };
+
     default:
       return state;
   }

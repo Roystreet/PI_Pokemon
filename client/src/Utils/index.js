@@ -44,6 +44,6 @@ export default function order(order, payload) {
     case "Fuerza Desc":
       return orderAtkDesc(payload);
     default:
-      break;
+      return payload;
   }
 }

@@ -17,3 +17,9 @@ export const CLEAR_POKEMON = "CLEAR_POKEMON";
 export const FILTER_BY_CREATE = "FILTER_BY_CREATE";
 
 export const ALL_POKEMON = "ALL_POKEMON";
+
+export const PREV_PAGE = "PREV_PAGE";
+
+export const NEXT_PAGE = "NEXT_PAGE";
+
+export const GET_PAGE = "GET_PAGE";
