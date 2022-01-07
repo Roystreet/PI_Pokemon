@@ -1,6 +1,0 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getTypes, getPokemon } from "./Actions/index";
-import "./App.css";
-import Card from "./Components/card/Card.jsx";
-import styles from "./grip.module.css";
