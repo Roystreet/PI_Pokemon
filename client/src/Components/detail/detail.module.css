@@ -1,5 +1,5 @@
 .container {
-  height: 80vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,12 +12,20 @@
   align-items: center;
   border: 2px solid;
   border-radius: 30px;
+  background: linear-gradient(#77acf1, #0a03e6);
+  color: #fff;
+  box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.2);
+  overflow: hidden;
+  cursor: default;
+  margin-top: 10px;
 }
 
 .grip_propiedades {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  padding: 10px;
+  font-weight: bold;
 }
 
 figure {
@@ -38,8 +46,27 @@ h2 {
   padding: 0;
   margin: 0;
   color: white;
+  text-align: center;
+  border-top: 1px solid #fff;
+  border-bottom: 0.5px solid #fff;
+}
+h3 {
+  background: #04009a;
+  padding: 0;
+  margin: 0;
+  color: white;
+  text-align: center;
+  border-top: 0.5px solid #fff;
+  border-bottom: 1px solid #fff;
 }
 
 .error {
   border-radius: 30px;
+}
+
+.container_types {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
+  font-weight: bold;
 }

@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTypes, getPokemon, clearPokemon, getPage, prevPage, nextPage } from "../../Actions/index";
+import { getTypes, getPokemon, clearPokemon, prevPage, nextPage } from "../../Actions/index";
 import Card from "../../Components/card";
 import styles from "./home.module.css";
 import { Order } from "../order";
 import NavBar from "../navBar";
 import Filter from "../filter";
-import  SearchBar  from "../searchBar/index";
+import Spinner from "../spinner";
 
  const Home= ()=>{
 
     const dispatch = useDispatch();
     const pokemons = useSelector((state) => state.pokemons);
     const page= useSelector((state) => state.page)
-     
     
     useEffect(() => {
       dispatch(getPokemon());
@@ -37,10 +36,10 @@ import  SearchBar  from "../searchBar/index";
       
       // primero determino cuantas paginas voy a tener, rendirazado condicional del paginado 
       
-      let paginas=  Math.floor(pokemons.length/12);
+      let paginas=  Math.floor(pokemons.length/12); // para paginado
       
     if(page===1){
-       return pokemons.slice(0,8)
+       return pokemons.slice(0,9)
     }else if(page){
         let offset= 12*page-3;
         let initial=offset-12
@@ -53,19 +52,17 @@ import  SearchBar  from "../searchBar/index";
 
     return( <>
     <NavBar/>
-    <div>
+    <div className={styles.flex_filtros}>
     <Order/>
     <Filter/>
-    <SearchBar/>
 
     </div>
     <div>
       <button name="prev" onClick={(e=> handlePage(e))}> prev</button> <span>{page}</span> <button name="next" onClick={(e=> handlePage(e))}> next</button>
     </div>
+    { pokemons? 
     <div className={styles.grip}>
-      { pokemons&& <h2> Cargando..
-        
-        </h2> && pagination(pokemons,page).map((data) => {
+      {  pagination(pokemons,page).map((data) => {
         return (
           <Card
             id={data.id}
@@ -77,7 +74,8 @@ import  SearchBar  from "../searchBar/index";
         );
       })}
     </div>
-  
+    :<Spinner/>
+      }
   </>)
 }
 

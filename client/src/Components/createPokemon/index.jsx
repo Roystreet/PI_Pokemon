@@ -37,7 +37,11 @@ import NavBar from '../navBar';
         
         
     }
-    
+
+    const handleBlur=(e)=>{
+        
+    }
+
     const handleSubmit=(e)=>{
         e.preventDefault();
         if (nombre===""){ return alert("el campo nombre no puede estar vacio")}
@@ -81,7 +85,7 @@ import NavBar from '../navBar';
                  <form onSubmit={handleSubmit} className={styles.part_cart} >
                     <h1> Crear Pokemon</h1>
                     <label>Nombre</label> 
-                    <input type="text" value={nombre} onChange={handleChange} placeholder="Nombre pokemon" name='nombre' ></input>
+                    <input type="text" value={nombre} onChange={handleChange} placeholder="Nombre pokemon" name='nombre' error="error" ></input>
                     <label>Vida: {vida}</label> 
                     <input type="range" value={vida} onChange={handleChange} placeholder="Vida del pokemon"  name='vida'  ></input>
                     <label>Defensa:{defensa}</label>
@@ -96,7 +100,7 @@ import NavBar from '../navBar';
                     <input type="range" value={peso} onChange={handleChange} placeholder="peso del pokemon"  name='peso'  ></input>
                     <label>imagen</label>
                     <input type="text" value={imagen} onChange={handleChange} placeholder="Imagen del pokemon" name='imagen'></input>
-                    <form className={styles.types}>
+                    <div className={styles.types}>
                         {types.map(({id, name})=>{
                             return( <div key={id}>
                                 <input type="checkbox" 
@@ -107,8 +111,10 @@ import NavBar from '../navBar';
                             </div>)
                         })}
                          
-                    </form  >
-                    <input type="submit" value="crear pokemon" />
+                    </div  >
+                    <div className={styles.container_flex}>
+                    <input className={styles.create} type="submit" value="crear pokemon" />
+                    </div>
                 </form>
                 </div>
                 

@@ -5,4 +5,13 @@
   height: 15vh;
   justify-content: space-around;
   align-items: center;
+  background: #3edbf0;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:active {
+  color: #fff;
 }

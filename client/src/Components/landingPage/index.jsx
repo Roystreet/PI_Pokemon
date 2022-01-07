@@ -8,10 +8,9 @@ import styles from "./landingPage.module.css"
 
         < >
         <div className={styles.container}> 
-        <h1 className={styles.title}> Bienvedios a mi proyecto</h1>
 
         <div className={styles.container_botton}>
-        <button><Link to="/home" className={styles.link}> Empezar</Link></button>
+        <button><Link to="/home" className={styles.link}> Bienvenido!</Link></button>
         </div>
         </div>
         </>

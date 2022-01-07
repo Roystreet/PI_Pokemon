@@ -41,7 +41,6 @@ export const getPokemonName = (name) => {
     axios
       .get(`${url}${"name=" + name}`)
       .then((response) => {
-        console.log(response.data.name);
         return response.data;
       })
       .then((data) => dispatch({ type: GET_POKEMON_NAME, payload: data }))

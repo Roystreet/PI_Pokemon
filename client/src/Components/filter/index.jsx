@@ -1,10 +1,9 @@
 import React,{useState} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
-import {getPokemon, filterBy, filterCreate, allPokemon, getPage} from '../../Actions'
+import { filterBy, filterCreate, allPokemon, getPage} from '../../Actions'
+import styles from "./filter.module.css"
 
 const Filter= ()=>{
-    const {push}= useHistory()
     const dispatch = useDispatch()
     const types= useSelector((state) => state.types)
     const pokemon= useSelector((state) => state.filter)
@@ -25,7 +24,6 @@ const Filter= ()=>{
     const handleFiltrar=(e)=>{
         
         let pivote=pokemon.filter((data) => data.types.includes(filter))
-        console.log(pivote)
         dispatch(filterBy(pivote))
         dispatch(getPage())
     }
@@ -42,11 +40,12 @@ const Filter= ()=>{
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <div>
-               <select onChange={handleChangeF}>
+               <select  onChange={handleChangeF}>
+                   <option value="--">--</option>
                    {types.map(({name})=>{
-                       return <option value={name}>{name}</option>
+                       return <option key={name} value={name}>{name}</option>
                    })}
                </select>
                 <input  type="submit"  onClick={handleFiltrar} value="Filtrar" />
@@ -59,7 +58,7 @@ const Filter= ()=>{
                 </select>
                 <input type="submit" value="buscar" onClick={handleBuscar}  />
             </div>
-            <button  onClick={handleClear}>AllPokemon</button>
+            <input type="submit" onClick={handleClear} value="Todos"/>
         </div>
     )
 }

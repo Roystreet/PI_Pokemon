@@ -2,21 +2,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15vh;
-  margin-bottom: 15vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
   flex-direction: row;
 }
 
 .new_pokemon {
-  border: 2px solid #000000;
+  border: 0.5px black rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
   padding: 20px;
   border-radius: 20px;
-  box-shadow: 3px 3px 3px 3px black;
-  height: auto;
-  width: 40vw;
+  box-shadow: 0px 1px 10px rgb(0, 0, 0, 0.2);
+  overflow: hidden;
+  cursor: default;
+  transition: all 400ms ease;
+  width: auto;
 }
+.new_pokemon:hover {
+  box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.4);
+  transform: translateY(-3%);
+}
+
 .part_cart {
   display: flex;
   flex-direction: column;
@@ -25,5 +32,12 @@
   display: inline-grid;
   grid-template-columns: repeat(5, 1fr);
 }
-.types div {
+
+.create {
+  width: 200px;
+}
+
+.container_flex {
+  display: flex;
+  justify-content: center;
 }

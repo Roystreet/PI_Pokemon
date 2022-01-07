@@ -23,7 +23,7 @@ import {useHistory} from "react-router-dom"
 
     return(
         <form onSubmit={handleSubmit}>
-            <input type="text"  name="search" value={search} placeholder="Aqui va tu pokemon" onChange={handleChange}></input>
+            <input type="text"  name="search" value={search} placeholder="Aqui va tu pokemon" onChange={handleChange}/>
             <input type="submit" value="buscar" />
         </form>
     )
