@@ -20,17 +20,18 @@
 }
 button {
   text-decoration: none;
-  background: #c0fefc;
+  background: #3edbf0;
   font-size: 20px;
   border: 1px solid;
   border-radius: 20px;
   padding: 10px;
-  box-shadow: 1.5px 1.5px 1.5px 1.5px;
+  box-shadow: 1.5px 1.5px 1.5px;
+  cursor: pointer;
 }
 .link {
   text-decoration: none;
   color: #04009a;
 }
 button:hover {
-  background: #3edbf0;
+  background: #c0fefc;
 }

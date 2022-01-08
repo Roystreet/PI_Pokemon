@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import styles from "./createPokemon.module.css";
 import NavBar from "../navBar";
+import { useHistory } from "react-router-dom";
 
 const CreatePokemon = () => {
   const types = useSelector((state) => state.types);
+  const { push } = useHistory();
   const [nombre, setNombre] = useState("");
   const [vida, setVida] = useState("");
   const [defensa, setDefensa] = useState("");
@@ -78,7 +80,7 @@ const CreatePokemon = () => {
       return alert("el campo altura no puede estar vacio");
     } else if (peso === "") {
       return alert("el campo peso no puede estar vacio");
-    } else if (types === []) {
+    } else if (types.lenght <= 0) {
       return alert("el campo types no puede estar vacio");
     } else {
       axios
@@ -104,7 +106,8 @@ const CreatePokemon = () => {
           setAltura("");
           setPeso("");
           setType([]);
-        });
+        })
+        .then(() => push("/home"));
     }
   };
 

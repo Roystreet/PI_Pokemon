@@ -18,6 +18,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const pokemons = useSelector((state) => state.pokemons);
   const page = useSelector((state) => state.page);
+  let paginas = Math.floor(pokemons.length / 12);
 
   useEffect(() => {
     dispatch(getPokemon());
@@ -28,15 +29,17 @@ const Home = () => {
   const handlePage = (e) => {
     if (e.target.name === "prev") {
       if (page !== 1) return dispatch(prevPage(page - 1));
-    } else {
-      return dispatch(nextPage(page + 1));
+    }
+
+    if (e.target.name === "next") {
+      if (page <= paginas) return dispatch(nextPage(page + 1));
     }
   };
 
   const pagination = (pokemons, page) => {
     // primero determino cuantas paginas voy a tener, rendirazado condicional del paginado
 
-    let paginas = Math.floor(pokemons.length / 12); // para paginado
+    // para paginado
 
     if (page === 1) {
       return pokemons.slice(0, 9);
@@ -55,15 +58,17 @@ const Home = () => {
         <Filter />
       </div>
       <div>
-        <button name="prev" onClick={(e) => handlePage(e)}>
-          {" "}
-          prev
-        </button>{" "}
-        <span>{page}</span>{" "}
-        <button name="next" onClick={(e) => handlePage(e)}>
-          {" "}
-          next
-        </button>
+        {page === 1 ? null : (
+          <button name="prev" onClick={(e) => handlePage(e)}>
+            prev
+          </button>
+        )}
+        <span>{page}</span>
+        {page >= paginas ? null : (
+          <button name="next" onClick={(e) => handlePage(e)}>
+            next
+          </button>
+        )}
       </div>
       {pokemons ? (
         <div className={styles.grip}>
